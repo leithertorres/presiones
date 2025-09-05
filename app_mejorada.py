@@ -100,7 +100,7 @@ class PDF(FPDF):
 # --- CONFIGURACIÓN DE LA API ---
 # Nota: La API Key se gestiona a través de los "Secrets" de Streamlit para mayor seguridad.
 # En local, crea un archivo .streamlit/secrets.toml y añade tu clave.
-OPENROUTER_API_KEY = st.secrets.get("OPENROUTER_API_KEY", "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")
+OPENROUTER_API_KEY = st.secrets.get("OPENROUTER_API_KEY", "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")
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # --- CLASE PRINCIPAL DE ANÁLISIS ---
@@ -373,4 +373,5 @@ El reporte debe estar estructurado en las siguientes secciones:
 
 if __name__ == "__main__":
     main()
+
 
