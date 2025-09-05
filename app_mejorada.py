@@ -236,7 +236,7 @@ def create_duration_chart(daily_summary):
 def generate_ai_report(daily_summary, system_prompt):
     try:
         user_content = f"Por favor, genera un reporte técnico en español basado en el siguiente resumen de rendimiento diario:\n\nTABLA DE RENDIMIENTO DIARIO:\n{daily_summary.to_string()}\n\nAnaliza esta tabla siguiendo las instrucciones del sistema."
-        response = requests.post(API_URL, headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}"}, json={"model": "mistralai/mistral-7b-instruct:free", "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_content}]})
+        response = requests.post(API_URL, headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}"}, json={"model": "google/gemini-2.0-flash-exp:free", "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_content}]})
         return response.json()['choices'][0]['message']['content'] if response.status_code == 200 else f"Error en la API: {response.status_code} - {response.text}"
     except Exception as e:
         return f"Error generando reporte: {e}"
@@ -373,5 +373,6 @@ El reporte debe estar estructurado en las siguientes secciones:
 
 if __name__ == "__main__":
     main()
+
 
 
